@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCXpert - Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    .product-info p {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('partials/header', { title: 'Home' }) %>
+
+  <main class="container">
+    <h1 class="page-title">Welcome to <span class="brand">PCXpert</span></h1>
+
+    <div class="product-list">
+      <% products.forEach(product => { %>
+        <div class="card">
+          <img src="<%= product.imageURL %>" alt="<%= product.name %>" class="product-image"/>
+          <div class="product-info">
+            <h3><%= product.name %></h3>
+            <p><strong>Harga:</strong> Rp <%= product.price.toLocaleString() %></p>
+            <p><strong>Stok:</strong> <%= product.stock %></p>
+            <p><strong>Toko:</strong> <%= product.Store ? product.Store.name : '-' %></p>
+
+            <form action="/cart/add/<%= product.id %>" method="POST" class="add-to-cart-form">
+              <input type="number" name="quantity" value="1" min="1" max="<%= product.stock %>" />
+              <button type="submit" class="btn">Tambah ke Keranjang</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+
+</html>
