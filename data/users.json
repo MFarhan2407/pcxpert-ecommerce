@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Admin Toko",
+    "email": "admin@tokokomputer.com",
+    "password": "admin123",
+    "role": "admin"
+  },
+  {
+    "name": "Pelanggan",
+    "email": "customer@mail.com",
+    "password": "customer123",
+    "role": "customer"
+  }
+]

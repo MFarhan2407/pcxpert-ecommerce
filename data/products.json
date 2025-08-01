@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Mechanical Keyboard",
+    "price": 750000,
+    "stock": 20,
+    "imageURL": "../images/keyboard.jpeg",
+    "description": "Keyboard RGB dengan switch merah",
+    "StoreId": 1
+  },
+  {
+    "name": "Gaming Mouse",
+    "price": 350000,
+    "stock": 30,
+    "imageURL": "../images/gamingMouse2.jpeg",
+    "description": "Mouse 8000 DPI dengan RGB",
+    "StoreId": 1
+  },
+  {
+    "name": "Monitor 24 inch",
+    "price": 1400000,
+    "stock": 10,
+    "imageURL": "../images/monitor.jpeg",
+    "description": "Full HD 75Hz",
+    "StoreId": 2
+  },
+  {
+    "name": "SSD 512GB",
+    "price": 880000,
+    "stock": 15,
+    "imageURL": "../images/ssd2.jpeg",
+    "description": "NVMe Gen3 Read 3500MB/s",
+    "StoreId": 2
+  }
+]

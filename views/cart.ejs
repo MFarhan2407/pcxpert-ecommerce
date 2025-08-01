@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>PCXpert - Keranjang</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <%- include('partials/header', { title: 'Keranjang' }) %>
+  
+  
+  <main class="container">
+    <h1 class="page-title">Keranjang Belanja Anda</h1>
+    
+
+    <% if (cartItems.length === 0) { %>
+    <p class="empty-cart">Keranjang masih kosong.</p>
+    <% } else { %>
+    <div class="cart-list">
+      <% cartItems.forEach(item => { %>
+      <div class="cart-item">
+        <img src="<%= item.Product.imageURL %>" alt="<%= item.Product.name %>">
+        <div class="cart-info">
+          <h3><%= item.Product.name %></h3>
+          <p>Harga: Rp <%= item.Product.price.toLocaleString() %></p>
+          <p>Jumlah: <%= item.quantity %></p>
+          <p>Subtotal: Rp <%= (item.Product.price * item.quantity).toLocaleString() %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="cart-summary">
+      <h2>Total: Rp <%= total.toLocaleString() %></h2>
+      <form action="/checkout" method="POST">
+        <button type="submit" class="btn checkout-btn">Checkout</button>
+      </form>
+    </div>
+    <% } %>
+  </main>
+  <% if (success_msg) { %>
+    <div class="flash-message success"><%= success_msg %></div>
+    <% } %>
+  
+    <% if (error_msg) { %>
+    <div class="flash-message error"><%= error_msg %></div>
+    <% } %>
+  <script>
+    const flashMessages = document.querySelectorAll('.flash-message');
+
+    flashMessages.forEach(msg => {
+      setTimeout(() => {
+        msg.style.transition = 'opacity 0.5s ease';
+        msg.style.opacity = '0';
+        setTimeout(() => {
+          msg.remove();
+        }, 500);
+      }, 3000);
+    });
+  </script>
+  
+
+
+  <%- include('partials/footer') %>
+</body>
+
+</html>

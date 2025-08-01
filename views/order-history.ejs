@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riwayat Transaksi</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <%- include('partials/header', { title: 'Riwayat Transaksi' }) %>
+
+  <h1>History</h1>
+
+  <% if (orders.length === 0) { %>
+    <p style="text-align:center;">Belum ada transaksi.</p>
+  <% } else { %>
+    <% orders.forEach(order => { %>
+      <div class="order-card">
+        <div class="order-header">
+          <span>Order ID: <%= order.orderId %></span>
+          <span>Tanggal: <%= order.tanggal %></span>
+        </div>
+
+        <div class="item-list">
+          <% order.items.forEach(item => { %>
+            <div class="item">
+              <span><%= item.productName %></span>
+              <span>x<%= item.quantity %> - Rp<%= item.price.toLocaleString("id-ID") %></span>
+            </div>
+          <% }) %>
+        </div>
+
+        <div class="total">Total: Rp<%= order.totalPrice.toLocaleString("id-ID") %></div>
+      </div>
+    <% }) %>
+  <% } %>
+</body>
+</html>
